@@ -1,6 +1,7 @@
 import { HeaderContainer } from './styles'
 import reactTimerLogo from '../../assets/react-timer-logo.svg'
 import { Timer, Scroll } from 'phosphor-react'
+import { NavLink } from 'react-router-dom'
 
 export function Header() {
   return (
@@ -10,12 +11,12 @@ export function Header() {
         alt='Logo composed of two overlapping triangles in shades of green with the tips pointing down to the left'
       />
       <nav>
-        <a href=''>
+        <NavLink to='/' title='Timer'>
           <Timer size={24} />
-        </a>
-        <a href=''>
+        </NavLink>
+        <NavLink to='/history' title='History'>
           <Scroll size={24} />
-        </a>
+        </NavLink>
       </nav>
     </HeaderContainer>
   )
