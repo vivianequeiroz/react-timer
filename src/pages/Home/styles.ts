@@ -54,3 +54,27 @@ export const CountDownColon = styled.div`
 
   color: ${(props) => props.theme['green-500']};
 `
+
+export const StartButton = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 1rem;
+  border-radius: 8px;
+  gap: 0.5rem;
+
+  font-weight: bold;
+  background-color: ${(props) => props.theme['green-500']};
+  color: ${(props) => props.theme['gray-100']};
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme['green-700']};
+  }
+`
