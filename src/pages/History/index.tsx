@@ -1,4 +1,4 @@
-import { HistoryContainer, ListContainer } from './styles'
+import { HistoryContainer, ListContainer, Status } from './styles'
 
 export function History() {
   return (
@@ -19,43 +19,57 @@ export function History() {
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='green'>Finished</Status>
+              </td>
             </tr>
             <tr>
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='red'>Interrupted</Status>
+              </td>
             </tr>
             <tr>
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='yellow'>In progress</Status>
+              </td>
             </tr>
             <tr>
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='green'>Finished</Status>
+              </td>
             </tr>
             <tr>
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='green'>Finished</Status>
+              </td>
             </tr>
             <tr>
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='green'>Finished</Status>
+              </td>
             </tr>
             <tr>
               <td>Clean bedroom</td>
               <td>60 minutes</td>
               <td>About a hour ago</td>
-              <td>Finished</td>
+              <td>
+                <Status statusColor='green'>Finished</Status>
+              </td>
             </tr>
           </tbody>
         </table>
