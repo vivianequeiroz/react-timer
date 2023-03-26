@@ -19,9 +19,22 @@ export function Home() {
             id='task'
             placeholder='Give a name to your task or project'
             type='text'
+            list='task-suggesitons'
           />
+
+          <datalist id='task-suggesitons'>
+            <option value='Study react' />
+            <option value='Clean desk' />
+            <option value='Wash clothes' />
+          </datalist>
           <label htmlFor=''>for</label>
-          <MinutesInput id='minutesAmount' placeholder='00' type='number' />
+          <MinutesInput
+            id='minutesAmount'
+            min={1}
+            max={60}
+            placeholder='00'
+            type='number'
+          />
           <label htmlFor=''>minutes.</label>
         </FormContainer>
 
