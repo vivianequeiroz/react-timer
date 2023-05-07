@@ -1,4 +1,4 @@
-import { Play } from 'phosphor-react'
+import { HandPalm, Play } from 'phosphor-react'
 import {
   CountDownColon,
   CountDownContainer,
@@ -6,6 +6,7 @@ import {
   HomeContainer,
   MinutesInput,
   StartButton,
+  StopButton,
   TaskInput,
 } from './styles'
 import { useForm } from 'react-hook-form'
@@ -26,6 +27,7 @@ interface Cycle {
   task: string
   minutesAmount: number
   startDate: Date
+  interruptedDate?: Date
 }
 
 export function Home() {
@@ -58,6 +60,20 @@ export function Home() {
     setAmountSecondsPassed(0)
 
     reset()
+  }
+
+  function handleInterrupCycle() {
+    setCycles(
+      cycles.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, interruptedDate: new Date() }
+        } else {
+          return cycle
+        }
+      }),
+    )
+
+    setActiveCycleId(null)
   }
 
   useEffect(() => {
@@ -98,6 +114,7 @@ export function Home() {
             placeholder='Give a name to your task or project'
             type='text'
             list='task-suggesitons'
+            disabled={!!activeCycle}
             {...register('task')}
           />
 
@@ -113,6 +130,7 @@ export function Home() {
             max={60}
             placeholder='00'
             type='number'
+            disabled={!!activeCycle}
             {...register('minutesAmount', { valueAsNumber: true })}
           />
           <label htmlFor=''>minutes.</label>
@@ -125,11 +143,17 @@ export function Home() {
           <span>{seconds[0]}</span>
           <span>{seconds[1]}</span>
         </CountDownContainer>
-
-        <StartButton disabled={isSubmitDisabled} type='submit'>
-          <Play size={24} />
-          Start
-        </StartButton>
+        {activeCycle ? (
+          <StopButton onClick={handleInterrupCycle} type='button'>
+            <HandPalm size={24} />
+            Interrupt
+          </StopButton>
+        ) : (
+          <StartButton disabled={isSubmitDisabled} type='submit'>
+            <Play size={24} />
+            Start
+          </StartButton>
+        )}
       </form>
     </HomeContainer>
   )
