@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useState } from 'react'
-// 14:33
 interface CreateNewCycleData {
   task: string
   minutesAmount: number
@@ -69,8 +68,6 @@ export function CyclesContextProvider({
     setCycles((previousCycles) => [...previousCycles, newCycle])
     setActiveCycleId(id)
     setAmountSecondsPassed(0)
-
-    // reset()
   }
 
   function interruptCurrentCycle() {
