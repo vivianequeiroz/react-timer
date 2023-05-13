@@ -8,7 +8,6 @@ export function History() {
   return (
     <HistoryContainer>
       <h1>My history</h1>
-      <pre>{JSON.stringify(cycles, null, 2)}</pre>
       <ListContainer>
         <table>
           <thead>
@@ -20,62 +19,28 @@ export function History() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='green'>Finished</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='red'>Interrupted</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='yellow'>In progress</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='green'>Finished</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='green'>Finished</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='green'>Finished</Status>
-              </td>
-            </tr>
-            <tr>
-              <td>Clean bedroom</td>
-              <td>60 minutes</td>
-              <td>About a hour ago</td>
-              <td>
-                <Status statusColor='green'>Finished</Status>
-              </td>
-            </tr>
+            {cycles.map((cycle) => {
+              return (
+                <tr key={cycle.id}>
+                  <td>{cycle.task}</td>
+                  <td>{cycle.minutesAmount}</td>
+                  <td>{cycle.startDate.toISOString()}</td>
+                  <td>
+                    {cycle.finishedDate && (
+                      <Status statusColor='green'>Finished</Status>
+                    )}
+
+                    {cycle.interruptedDate && (
+                      <Status statusColor='red'>Interrupted</Status>
+                    )}
+
+                    {!cycle.finishedDate && !cycle.interruptedDate && (
+                      <Status statusColor='yellow'>On going</Status>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </ListContainer>
